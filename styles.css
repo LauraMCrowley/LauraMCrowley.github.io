@@ -1,3 +1,7 @@
-/* {
-    border: 1px red solid;
-  }
+a {
+        color: black;
+        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
+        font-size: .9rem;
+        font-weight: 500;
+        text-decoration: none;
+ }
