@@ -9,3 +9,15 @@ a {
         font-weight: 500;
         text-decoration: none;
  }
+
+h1 {
+        color: #1f1f1f;
+        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
+        font-size: 30px;
+ }
+
+ h2 {
+        color: #1f1f1f;
+        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
+        font-size: 25px;
+ }
