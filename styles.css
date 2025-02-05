@@ -13,7 +13,7 @@ a {
 .h1 {
         color: #1f1f1f;
         font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
-        font-size: 64px;
+        font-size: 70px;
  }
 
 h2 {
@@ -34,5 +34,5 @@ h2 {
  }
 
  .border {
-        margin-top:-20px;
+        margin-top:20px;
  }
