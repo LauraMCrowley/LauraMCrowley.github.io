@@ -10,13 +10,13 @@ a {
         text-decoration: none;
  }
 
-.h1, h1 {
+.h1 {
         color: #1f1f1f;
         font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
         font-size: 100px;
  }
 
-.h2, h2 {
+h2 {
         color: #1f1f1f;
         font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
         font-size: 30px;
@@ -25,4 +25,10 @@ a {
  #headshot {
         border-right: 20px solid #ABD5E6;
         border-bottom: 20px solid #ABD5E6;
+ }
+
+ p {
+        color: #1f1f1f;
+        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
+        font-size: 22px;
  }
