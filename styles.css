@@ -32,3 +32,7 @@ h2 {
         font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
         font-size: 18px;
  }
+
+ .border {
+        margin-top:-20px;
+ }
