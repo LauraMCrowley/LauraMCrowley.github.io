@@ -23,9 +23,8 @@ h2 {
  }
 
  #headshot {
-        /*border-right: 20px solid #ABD5E6;
-        border-bottom: 20px solid #ABD5E6;*/
-        margin-top:-20px!important;
+        border-right: 20px solid #ABD5E6;
+        border-bottom: 20px solid #ABD5E6;
  }
 
  p {
