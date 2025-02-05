@@ -25,14 +25,11 @@ h2 {
  #headshot {
         border-right: 20px solid #ABD5E6;
         border-bottom: 20px solid #ABD5E6;
+        margin-top:-20px;
  }
 
  p {
         color: #1f1f1f;
         font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
         font-size: 18px;
- }
-
- .border {
-        margin-top:20px;
  }
