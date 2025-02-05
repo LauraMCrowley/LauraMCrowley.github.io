@@ -21,3 +21,7 @@ a {
         font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
         font-size: 25px;
  }
+
+ #headshot {
+        border-right: 20px solid #ABD5E6;
+ }
