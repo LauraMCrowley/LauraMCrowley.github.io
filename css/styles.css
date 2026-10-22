@@ -278,7 +278,7 @@ a { color: inherit; }
   filter: saturate(0);
 }
 .experience__logos:hover {
-  filter: saturate(100);
+  filter: none;
 }
 .experience__logos li { display: grid; place-items: center; height: 122px; }
 .tech { max-width: 100%; height: auto; }
@@ -418,54 +418,6 @@ a { color: inherit; }
   transition: transform 0.6s ease;
 }
 .tile:hover .tile__image { transform: scale(1.04); }
-
-
-/* ==========================================================================
-   13. CONTACT FORM
-   ========================================================================== */
-.contact { position: relative; padding: 85px 0 70px; }
-.contact__bg {
-  position: absolute; inset: 0; z-index: 0;
-  background:
-    linear-gradient(0deg, rgba(255, 255, 255, 0.79) 79%, #fff 100%),
-    url("../images/branded-gradient-background.webp") 42% 0% / cover no-repeat,
-    linear-gradient(135deg, #30b6c5 0%, #ad45e1 100%);
-}
-.contact__inner { position: relative; z-index: 1; max-width: 1053px; margin-inline: auto; padding-inline: 15px; }
-
-.contact-form {
-  max-width: 963px; margin: 40px auto 0; padding: 35px 45px 40px;
-  display: flex; flex-direction: column; gap: 15px;
-  background: var(--gradient); border-radius: 15px;
-  box-shadow: 0 0 10px rgba(52, 52, 52, 0.4);
-}
-.contact-form input,
-.contact-form textarea {
-  width: 100%; padding: 14px 24px;
-  font: 400 18px/27px var(--font); color: var(--ink);
-  background: var(--white); border: 1px solid #dcdee1; border-radius: 0;
-}
-.contact-form textarea { min-height: 165px; resize: vertical; }
-.contact-form input:focus,
-.contact-form textarea:focus { outline: 3px solid rgba(255, 255, 255, 0.6); outline-offset: 0; }
-
-.contact-form__send {
-  padding: 14px 0; cursor: pointer;
-  font: 500 17px/27px var(--font); letter-spacing: 1px; color: var(--ink);
-  background: var(--white); border: 2px solid var(--white); border-radius: 100px;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-.contact-form__send:hover { background: transparent; color: var(--white); }
-.contact-form__send:disabled { opacity: 0.7; cursor: wait; }
-
-.hp-field { position: absolute !important; left: -9999px; width: 1px !important; height: 1px !important; opacity: 0; padding: 0 !important; }
-
-.form-status { display: none; padding: 10px 18px; border-radius: 10px; font-weight: 600; line-height: 1.5; text-align: center; background: var(--white); }
-.form-status.is-success, .form-status.is-error { display: block; }
-.form-status.is-success { color: #1b7a52; }
-.form-status.is-error   { color: #b83227; }
-.form-status a { color: inherit; }
-
 
 /* ==========================================================================
    14. FOOTER
