@@ -556,11 +556,11 @@ a {
   width: 122px;
 }
 
-.tech img {
+img .tech {
   filter:saturate(0);
 }
 
-.tech img:hover {
+img .tech:hover {
   filter:none;
 }
 
