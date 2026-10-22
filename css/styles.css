@@ -879,9 +879,9 @@ a {
   transition: transform 0.6s ease;
 }
 
-.tile li:hover {
-  transform: scale(1.02);
-}
+/*.tile:hover .tile__image {
+  transform: scale(1.04);
+}*/
 
 /* ==========================================================================
    14. FOOTER
