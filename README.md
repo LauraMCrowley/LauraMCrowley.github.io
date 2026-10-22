@@ -11,15 +11,8 @@ files/             (CV PDF, filled by the script below)
 download-missing-images.py
 ```
 
-## First-time setup
-Some images were hosted on Brizy's servers and weren't in the saved page. Run once (needs internet):
-
-    python3 download-missing-images.py
-
-Then open `index.html` in a browser (or serve the folder with any static host).
-
 ## Contact form
-Posts to FormSubmit and emails lauramcrowley00@gmail.com. The first submission after the site is live
+Posts to FormSubmit and emails address given. The first submission after the site is live
 sends an activation email to that address; click the link once and later messages arrive normally.
 
 ## Editing
