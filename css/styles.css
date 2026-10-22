@@ -711,7 +711,10 @@ a {
   object-fit: cover;
   border-radius: 15px;
   filter: brightness(1.1) saturate(0);
-  /* greyscale, as on the original */
+}
+
+.about__photo>img:hover {
+  filter:none!important;
 }
 
 .about__photo-logo {
