@@ -538,6 +538,7 @@ a {
 .tech {
   max-width: 100%;
   height: auto;
+  filter:saturate(0);
 }
 
 .tech--wordpress {
@@ -556,11 +557,7 @@ a {
   width: 122px;
 }
 
-img .tech {
-  filter:saturate(0);
-}
-
-img .tech:hover {
+.tech li:hover img {
   filter:none;
 }
 
