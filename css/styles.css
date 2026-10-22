@@ -1,7 +1,5 @@
 /* ==========================================================================
    Laura Crowley - Portfolio
-   Rebuilt from the original Brizy page; sizes, colours and spacing are taken
-   from the original's own styles.
 
    Contents
    1.  Design tokens (colours, fonts)
@@ -28,7 +26,7 @@
    1. DESIGN TOKENS
    ========================================================================== */
 :root {
-  /* Brand palette (from Brizy's global colours) */
+  /* Brand palette  */
   --teal:       #30b6c5;
   --teal-dark:  #1d92a0;
   --teal-light: #baecf2;
@@ -161,6 +159,7 @@ a { color: inherit; }
    Sits on top of the hero (like the original) and scrolls away with the page.
    ========================================================================== */
 .site-header {
+  padding-top:10px;
   position: absolute; inset: 0 0 auto 0; z-index: 50;
   height: var(--header-h);
 }
@@ -231,7 +230,7 @@ a { color: inherit; }
    ========================================================================== */
 .hero {
   position: relative; display: flex; align-items: center;
-  min-height: 540px; padding: 105px 0 30px; overflow: hidden;
+  min-height: 580px; padding: 105px 0 30px; overflow: hidden;
 }
 .hero__bg {
   position: absolute; inset: 0; z-index: 0;
@@ -268,7 +267,10 @@ a { color: inherit; }
    ========================================================================== */
 .experience { padding: 30px 0 32px; background: var(--grey-bg); }
 .experience__label {
-  font-size: 23px; font-weight: 500; line-height: 1.4; text-align: center; color: var(--ink);
+  font-size: 23px; font-weight: 500; line-height: 1.4; text-align: center; filter: saturate(0);/*color: var(--ink);*/
+}
+.experience__label:hover{
+  font-size: 23px; font-weight: 500; line-height: 1.4; text-align: center; filter: saturate(100); color: var(--ink);
 }
 .experience__logos {
   display: grid; grid-template-columns: repeat(4, 200px);
@@ -290,7 +292,7 @@ a { color: inherit; }
 
 .projects__grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
-  max-width: 1600px; margin: 50px auto 0; align-items: start;
+  /*max-width: 1600px;*/ margin: 50px auto 0; align-items: start;
 }
 .projects__grid .project-card:nth-child(2) { margin-top: 40px; } /* staggered middle card */
 .projects .center { margin-top: 54px; }

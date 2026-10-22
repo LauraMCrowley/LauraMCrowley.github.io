@@ -1,6 +1,6 @@
 /* ==========================================================================
    Laura Crowley - Portfolio
-   Plain JavaScript, no libraries. Replaces Brizy's scripts.
+   Plain JavaScript, no libraries. 
    Contents
    1. Setup
    2. Mobile slide-in menu
