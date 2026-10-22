@@ -535,12 +535,12 @@ a {
   height: 122px;
 }
 
-.experience__logos li  img {
-    filter:saturate(0);
+.experience__logos li img {
+  filter: saturate(0);
 }
 
-.experience__logos li:hover  img {
-  filter:none;
+.experience__logos li:hover img {
+  filter: none!important;
 }
 
 .tech {
