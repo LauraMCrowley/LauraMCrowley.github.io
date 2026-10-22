@@ -541,6 +541,10 @@ a {
   height: auto;
 }
 
+.tech:hover{
+  filter:none;
+}
+
 .tech--wordpress {
   width: 85px;
 }
@@ -556,23 +560,6 @@ a {
 .tech--woocommerce {
   width: 122px;
 }
-
-.tech--wordpress:hover {
-  filter: none
-}
-
-.tech--brizy:hover {
-  filter: none
-}
-
-.tech--elementor:hover {
-  filter: none
-}
-
-.tech--woocommerce:hover {
-  filter: none
-}
-
 
 
 /* ==========================================================================
