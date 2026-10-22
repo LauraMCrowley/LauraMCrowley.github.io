@@ -527,7 +527,6 @@ a {
   justify-content: center;
   align-items: center;
   margin-top: 22px;
-  filter: saturate(0);
 }
 
 .experience__logos li {
@@ -541,26 +540,29 @@ a {
   height: auto;
 }
 
-.tech:hover{
-  filter:none;
-}
-
 .tech--wordpress {
   width: 85px;
+  filter: saturate(0);
 }
 
 .tech--brizy {
   width: 170px;
+  filter: saturate(0);
 }
 
 .tech--elementor {
   width: 92px;
+  filter: saturate(0);
 }
 
 .tech--woocommerce {
   width: 122px;
+  filter: saturate(0);
 }
 
+.tech--wordpress, .tech--brizy, .tech--elementor, .tech--woocommerce{
+  filter:none;
+}
 
 /* ==========================================================================
    9. PROJECTS (flip cards)
