@@ -307,7 +307,6 @@ a {
   flex: none;
   display: block;
   width: 65px;
-  margin-right: 15px;
 }
 
 .site-header__logo img {
@@ -321,6 +320,7 @@ a {
 }
 
 .site-nav__list {
+  padding-left:20px;
   display: flex;
   gap: 21px;
 }
