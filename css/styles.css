@@ -267,14 +267,18 @@ a { color: inherit; }
    ========================================================================== */
 .experience { padding: 30px 0 32px; background: var(--grey-bg); }
 .experience__label {
-  font-size: 23px; font-weight: 500; line-height: 1.4; text-align: center; filter: saturate(0);/*color: var(--ink);*/
+  font-size: 23px; font-weight: 500; line-height: 1.4; text-align: center; /*color: var(--ink);*/
 }
 .experience__label:hover{
-  font-size: 23px; font-weight: 500; line-height: 1.4; text-align: center; filter: saturate(100); color: var(--ink);
+  font-size: 23px; font-weight: 500; line-height: 1.4; text-align: center; color: var(--ink);
 }
 .experience__logos {
   display: grid; grid-template-columns: repeat(4, 200px);
   justify-content: center; align-items: center; margin-top: 22px;
+  filter: saturate(0);
+}
+.experience__logos:hover {
+  filter: saturate(100);
 }
 .experience__logos li { display: grid; place-items: center; height: 122px; }
 .tech { max-width: 100%; height: auto; }
@@ -292,7 +296,7 @@ a { color: inherit; }
 
 .projects__grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
-  /*max-width: 1600px;*/ margin: 50px auto 0; align-items: start;
+  /*max-width: 1400px;*/padding: 0 50px; margin: 50px auto 0; align-items: start;
 }
 .projects__grid .project-card:nth-child(2) { margin-top: 40px; } /* staggered middle card */
 .projects .center { margin-top: 54px; }
