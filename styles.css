@@ -1,40 +1,570 @@
-* {
-        border: 1px red solid;
+/* ==========================================================================
+   Laura Crowley - Portfolio
+   Rebuilt from the original Brizy page; sizes, colours and spacing are taken
+   from the original's own styles.
+
+   Contents
+   1.  Design tokens (colours, fonts)
+   2.  Reset & base
+   3.  Layout helpers & shared pieces (titles, underline, icon circles)
+   4.  Buttons (.btn-cta, .live-link)
+   5.  Header & navigation
+   6.  Mobile slide-in menu
+   7.  Hero & slider
+   8.  "Experience with" strip
+   9.  Projects (flip cards)
+   10. About
+   11. Logo designs
+   12. More website designs
+   13. Contact form
+   14. Footer
+   15. Scroll-reveal
+   16. Responsive: tablet (max 991px)
+   17. Responsive: mobile (max 767px)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
+:root {
+  /* Brand palette (from Brizy's global colours) */
+  --teal:       #30b6c5;
+  --teal-dark:  #1d92a0;
+  --teal-light: #baecf2;
+  --purple:     #ad45e1;
+  --grey-text:  #676767;
+  --grey-bg:    #f3f3f3;
+  --ink:        #343434;
+  --white:      #ffffff;
+
+  --gradient: linear-gradient(90deg, var(--teal) 10%, var(--purple) 100%);
+
+  --font: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  --header-h: 75px;
 }
 
-a {
-        color: #1f1f1f;
-        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
-        font-size: 17px;
-        font-weight: 500;
-        text-decoration: none;
- }
 
-.h1 {
-        color: #1f1f1f;
-        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
-        font-size: 80px;
- }
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
 
-h2 {
-        color: #1f1f1f;
-        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
-        font-size: 36px;
- }
+html { scroll-behavior: smooth; }
 
- h3 {
-       color: #1f1f1f;
-       font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
-       font-size: 24px;
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
 }
 
- #headshot {
-        border-right: 20px solid #ABD5E6;
-        border-bottom: 20px solid #ABD5E6;
- }
+img { max-width: 100%; height: auto; display: block; }
+ul { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p { margin: 0; }
+a { color: inherit; }
 
- p {
-        color: #1f1f1f;
-        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
-        font-size: 18px;
- }
+:focus-visible { outline: 3px solid var(--teal-dark); outline-offset: 3px; }
+
+.skip-link {
+  position: absolute; left: 12px; top: -60px; z-index: 300;
+  padding: 10px 16px; background: var(--white); color: var(--ink); border-radius: 8px;
+}
+.skip-link:focus { top: 12px; }
+
+.icon {
+  width: 18px; height: 18px; fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+
+/* ==========================================================================
+   3. LAYOUT HELPERS & SHARED PIECES
+   ========================================================================== */
+.container { width: 100%; max-width: 1170px; margin-inline: auto; padding-inline: 15px; }
+.container--wide { max-width: 1366px; padding-inline: 10px; }
+.center { text-align: center; }
+
+.section { position: relative; padding: 85px 0 75px; }
+
+/* Section headings */
+.section-title {
+  font-size: 40px; font-weight: 600; line-height: 1.3;
+  text-align: center; color: var(--ink);
+}
+.section-title--small { font-size: 35px; line-height: 1.4; }
+
+/* Animated gradient bar under section headings (the original's ".underline") */
+.title-underline {
+  width: 40%; height: 6px; margin: 10px auto 0;
+  background: repeating-linear-gradient(90deg,
+    #30b6c5 0%, #6c95d8 25%, #ad45e1 50%, #6c95d8 75%, #30b6c5 100%);
+  background-size: 400% 100%;
+  animation: roll 12s linear infinite;
+}
+@keyframes roll {
+  from { background-position: 0% 0; }
+  to   { background-position: -400% 0; }
+}
+
+/* Round gradient icon buttons (hero + footer) */
+.hero__icons { display: flex; gap: 10px; }
+.icon-circle {
+  display: grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 100px;
+  color: var(--white); background-image: linear-gradient(90deg, var(--teal) 0%, var(--purple) 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.icon-circle:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(173, 69, 225, 0.35); }
+
+
+/* ==========================================================================
+   4. BUTTONS
+   ========================================================================== */
+
+/* Pill button with a small circle that grows to fill it on hover */
+.btn-cta {
+  position: relative; display: inline-block;
+  padding: 4px 16px; border: 0; background: none; cursor: pointer;
+  font: 500 16px/27px var(--font); letter-spacing: 1px;
+  color: #000; text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.btn-cta::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 35px; height: 35px; border-radius: 50px;
+  background: var(--teal-light);
+  transition: all 0.3s ease;
+}
+.btn-cta span { position: relative; transition: color 0.3s ease; }
+.btn-cta:hover::before { width: 100%; background: var(--purple); }
+.btn-cta:hover span { color: var(--white); }
+.btn-cta:active { transform: scale(0.95); }
+
+/* "Live website" link with arrow that nudges right on hover */
+.live-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 4px 12px;
+  font-weight: 500; font-size: 17px; line-height: 27px; letter-spacing: 1px;
+  color: var(--ink); text-decoration: none;
+}
+.live-link .icon { width: 16px; height: 16px; }
+.live-link:hover { animation: moveRight 0.3s ease forwards; }
+@keyframes moveRight { from { transform: translateX(0); } to { transform: translateX(5px); } }
+
+
+/* ==========================================================================
+   5. HEADER & NAVIGATION
+   Sits on top of the hero (like the original) and scrolls away with the page.
+   ========================================================================== */
+.site-header {
+  position: absolute; inset: 0 0 auto 0; z-index: 50;
+  height: var(--header-h);
+}
+.site-header__inner { height: 100%; display: flex; align-items: center; }
+.site-header__logo { flex: none; display: block; width: 65px; margin-right: 15px; }
+.site-header__logo img { width: 65px; height: 65px; }
+
+.site-nav { flex: 1; }
+.site-nav__list { display: flex; gap: 21px; }
+.site-nav a {
+  display: block; padding: 0 5px;
+  font-weight: 500; font-size: 17px; line-height: 27px; letter-spacing: 1px;
+  color: var(--ink); text-decoration: none;
+  transition: color 0.5s linear;
+}
+.site-nav a:hover { color: var(--purple); }
+
+.site-header__cta { margin-right: 28px; }
+
+/* Hamburger (shown on tablet/mobile) */
+.nav-toggle {
+  display: none; position: relative; width: 44px; height: 44px;
+  padding: 0; background: none; border: 0; cursor: pointer;
+}
+.nav-toggle span {
+  position: absolute; left: 9px; right: 9px; height: 3px; border-radius: 3px;
+  background: var(--ink);
+}
+.nav-toggle span:nth-child(1) { top: 14px; }
+.nav-toggle span:nth-child(2) { top: 21px; }
+.nav-toggle span:nth-child(3) { top: 28px; }
+
+
+/* ==========================================================================
+   6. MOBILE SLIDE-IN MENU
+   ========================================================================== */
+.mobile-menu-backdrop {
+  position: fixed; inset: 0; z-index: 90; background: rgba(0, 0, 0, 0.45);
+}
+.mobile-menu-backdrop[hidden] { display: none; }
+
+.mobile-menu {
+  position: fixed; top: 0; bottom: 0; left: 0; z-index: 100;
+  width: min(320px, 85vw); padding: 0 0 24px;
+  background: var(--white); box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+  transform: translateX(-105%); visibility: hidden;
+  transition: transform 0.3s ease, visibility 0s linear 0.3s;
+  overflow-y: auto;
+}
+.mobile-menu.is-open { transform: none; visibility: visible; transition: transform 0.3s ease; }
+
+.mobile-menu__title {
+  padding: 22px 24px; font-weight: 600; font-size: 20px; line-height: 1.4;
+  color: var(--white); background: var(--gradient);
+}
+.mobile-menu a {
+  display: block; padding: 14px 24px;
+  font-weight: 500; font-size: 18px; letter-spacing: 1px;
+  color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--grey-bg);
+}
+.mobile-menu a:hover { color: var(--purple); background: var(--grey-bg); }
+
+
+/* ==========================================================================
+   7. HERO & SLIDER
+   The branded gradient image sits under a white wash; if the image file is
+   missing, the CSS gradient underneath is used instead.
+   ========================================================================== */
+.hero {
+  position: relative; display: flex; align-items: center;
+  min-height: 540px; padding: 105px 0 30px; overflow: hidden;
+}
+.hero__bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(70deg, rgba(255, 255, 255, 0.73) 0%, rgba(255, 255, 255, 0.81) 100%),
+    url("../images/branded-gradient-background.webp") 42% 0% / cover no-repeat,
+    linear-gradient(70deg, #30b6c5 0%, #8e8fe0 50%, #ad45e1 100%);
+}
+.hero__inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 48.5% 51.5%; align-items: center;
+}
+
+.hero h1 {
+  font-size: 65px; font-weight: 700; line-height: 1.3; color: var(--ink);
+}
+.hero__name {
+  margin: 30px 0 10px;
+  font-size: 30px; font-weight: 600; line-height: 1.5; letter-spacing: 1.1px;
+  color: var(--grey-text);
+}
+
+/* Fade slider: slides share one grid cell and cross-fade (see js/main.js) */
+.slider { display: grid; }
+.slide {
+  grid-area: 1 / 1; width: 100%;
+  opacity: 0; transition: opacity 0.8s ease;
+}
+.slide.is-active { opacity: 1; }
+
+
+/* ==========================================================================
+   8. "EXPERIENCE WITH" STRIP
+   ========================================================================== */
+.experience { padding: 30px 0 32px; background: var(--grey-bg); }
+.experience__label {
+  font-size: 23px; font-weight: 500; line-height: 1.4; text-align: center; color: var(--ink);
+}
+.experience__logos {
+  display: grid; grid-template-columns: repeat(4, 200px);
+  justify-content: center; align-items: center; margin-top: 22px;
+}
+.experience__logos li { display: grid; place-items: center; height: 122px; }
+.tech { max-width: 100%; height: auto; }
+.tech--wordpress  { width: 85px; }
+.tech--brizy      { width: 170px; }
+.tech--elementor  { width: 92px; }
+.tech--woocommerce{ width: 122px; }
+
+
+/* ==========================================================================
+   9. PROJECTS (flip cards)
+   Front = screenshot + label. Back slides up on hover / focus / tap.
+   ========================================================================== */
+.projects { background: var(--white); }
+
+.projects__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+  max-width: 1600px; margin: 50px auto 0; align-items: start;
+}
+.projects__grid .project-card:nth-child(2) { margin-top: 40px; } /* staggered middle card */
+.projects .center { margin-top: 54px; }
+
+.project-card {
+  position: relative; height: 353px; overflow: hidden;
+  box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.3);   /* the original ".project" shadow */
+  background: var(--grey-bg);
+  cursor: pointer;
+}
+
+.project-card__front,
+.project-card__back {
+  position: absolute; inset: 0;
+  transition: transform 0.8s ease;
+}
+
+.project-card__front { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; }
+.project-card__image {
+  position: absolute; inset: 0;
+  background-color: #d9dbe3;           /* shows if a screenshot is missing */
+  background-size: cover; background-repeat: no-repeat;
+}
+.project-card__label {
+  position: relative; margin: 35px 0; padding: 7px 17.5px;
+  font-size: 35px; font-weight: 700; line-height: 1.5; text-align: right;
+  background: var(--white); color: #000;
+  box-shadow: 1px 4px 10px #888;
+}
+
+.project-card__back {
+  display: flex; flex-direction: column; align-items: flex-end;
+  padding: 15px 20px 25px; overflow-y: auto;
+  background: var(--grey-bg);
+  transform: translateY(100%);
+}
+.project-card__back p { align-self: stretch; margin-bottom: 10px; text-align: left; color: var(--ink); }
+.project-card__back .live-link { margin-top: auto; }
+
+.project-card:hover .project-card__back,
+.project-card:focus-within .project-card__back,
+.project-card.is-flipped .project-card__back { transform: none; }
+
+
+/* ==========================================================================
+   10. ABOUT
+   ========================================================================== */
+.about { position: relative; padding: 100px 0 25px; }
+.about__bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(0deg, rgba(255, 255, 255, 0.79) 79%, #fff 100%),
+    url("../images/branded-gradient-background.webp") 42% 0% / cover no-repeat,
+    linear-gradient(135deg, #30b6c5 0%, #ad45e1 100%);
+}
+.about__inner { position: relative; z-index: 1; max-width: 1053px; margin-inline: auto; padding-inline: 15px; }
+
+.about__intro { display: grid; grid-template-columns: 31.8% 68.2%; align-items: center; }
+
+.about__photo { position: relative; width: 298px; margin-inline: auto; }
+.about__photo > img:first-child {
+  width: 298px; height: 400px; object-fit: cover; border-radius: 15px;
+  filter: brightness(1.1) saturate(0);                /* greyscale, as on the original */
+}
+.about__photo-logo { position: absolute; left: 10px; bottom: 9px; width: 61px; height: 61px; }
+
+.about__text { padding-left: 56px; }
+.about__name { font-size: 35px; font-weight: 600; line-height: 1.4; color: var(--ink); }
+.about__role { font-size: 23px; font-weight: 500; line-height: 1.4; color: var(--teal-dark); margin-bottom: 10px; }
+.about__text p + p { margin-top: 1.1em; }
+.about__text a { text-underline-offset: 3px; }
+
+/* "Key Experience" gradient card */
+.experience-card {
+  max-width: 963px; margin: 94px auto 0; padding: 40px 45px 45px;
+  color: var(--white); background: var(--gradient);
+  border-radius: 15px; box-shadow: 0 0 10px rgba(52, 52, 52, 0.4);
+}
+.experience-card h3 { font-size: 35px; font-weight: 600; line-height: 1.4; }
+.experience-card__job { margin: 10px 0 15px; font-size: 17px; }
+.experience-card__lists { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+.experience-card ul { list-style: disc; margin-left: 16px; }
+.experience-card li { margin-left: 20px; font-size: 20px; line-height: 32px; }
+
+
+/* ==========================================================================
+   11. LOGO DESIGNS
+   Greyscale until hovered, like the original.
+   ========================================================================== */
+.logos { padding-bottom: 75px; }
+.logos__row {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  max-width: 1120px; margin: 40px auto 0; align-items: center; justify-items: center;
+}
+.logos__row li { display: grid; place-items: center; min-height: 120px; }
+.logos__row img {
+  width: var(--w, 100px); max-width: 100%;
+  filter: saturate(0); transition: filter 0.4s ease, transform 0.3s ease;
+}
+.logos__row li:hover img { filter: none; transform: scale(1.05); }
+
+
+/* ==========================================================================
+   12. MORE WEBSITE DESIGNS
+   ========================================================================== */
+.websites { background: linear-gradient(0deg, var(--grey-bg) 0%, var(--white) 100%); }
+.websites__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+  max-width: 1346px; margin: 40px auto 0; padding-inline: 10px;
+}
+.tile { aspect-ratio: 418 / 280; box-shadow: 0 0 15px rgba(52, 52, 52, 0.19); background: #fff; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+/* centre a lone tile on the last row (3-column layout) */
+@media (min-width: 992px) { .tile:last-child:nth-child(3n+1) { grid-column: 2; } }
+.tile:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(52, 52, 52, 0.28); }
+.tile__link { display: block; width: 100%; height: 100%; overflow: hidden; }
+.tile__image {
+  display: block; width: 100%; height: 100%;
+  background-color: #d9dbe3; background-size: cover; background-repeat: no-repeat;
+  transition: transform 0.6s ease;
+}
+.tile:hover .tile__image { transform: scale(1.04); }
+
+
+/* ==========================================================================
+   13. CONTACT FORM
+   ========================================================================== */
+.contact { position: relative; padding: 85px 0 70px; }
+.contact__bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(0deg, rgba(255, 255, 255, 0.79) 79%, #fff 100%),
+    url("../images/branded-gradient-background.webp") 42% 0% / cover no-repeat,
+    linear-gradient(135deg, #30b6c5 0%, #ad45e1 100%);
+}
+.contact__inner { position: relative; z-index: 1; max-width: 1053px; margin-inline: auto; padding-inline: 15px; }
+
+.contact-form {
+  max-width: 963px; margin: 40px auto 0; padding: 35px 45px 40px;
+  display: flex; flex-direction: column; gap: 15px;
+  background: var(--gradient); border-radius: 15px;
+  box-shadow: 0 0 10px rgba(52, 52, 52, 0.4);
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%; padding: 14px 24px;
+  font: 400 18px/27px var(--font); color: var(--ink);
+  background: var(--white); border: 1px solid #dcdee1; border-radius: 0;
+}
+.contact-form textarea { min-height: 165px; resize: vertical; }
+.contact-form input:focus,
+.contact-form textarea:focus { outline: 3px solid rgba(255, 255, 255, 0.6); outline-offset: 0; }
+
+.contact-form__send {
+  padding: 14px 0; cursor: pointer;
+  font: 500 17px/27px var(--font); letter-spacing: 1px; color: var(--ink);
+  background: var(--white); border: 2px solid var(--white); border-radius: 100px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.contact-form__send:hover { background: transparent; color: var(--white); }
+.contact-form__send:disabled { opacity: 0.7; cursor: wait; }
+
+.hp-field { position: absolute !important; left: -9999px; width: 1px !important; height: 1px !important; opacity: 0; padding: 0 !important; }
+
+.form-status { display: none; padding: 10px 18px; border-radius: 10px; font-weight: 600; line-height: 1.5; text-align: center; background: var(--white); }
+.form-status.is-success, .form-status.is-error { display: block; }
+.form-status.is-success { color: #1b7a52; }
+.form-status.is-error   { color: #b83227; }
+.form-status a { color: inherit; }
+
+
+/* ==========================================================================
+   14. FOOTER
+   ========================================================================== */
+.site-footer { padding: 45px 0 50px; background: var(--white); }
+.site-footer__top { display: flex; align-items: center; justify-content: space-between; padding-inline: 15px; }
+.site-footer__nav { display: flex; flex-wrap: wrap; gap: 0 30px; }
+.site-footer__nav a {
+  display: block; padding: 0 5px;
+  font-weight: 500; font-size: 17px; line-height: 27px; letter-spacing: 1px;
+  color: var(--ink); text-decoration: none; transition: color 0.5s linear;
+}
+.site-footer__nav a:hover { color: var(--purple); }
+.site-footer .hero__icons { gap: 20px; }
+
+.site-footer hr { margin: 32px 0 20px; border: 0; height: 1px; background: rgba(186, 236, 242, 0.7); }
+.site-footer__bottom { display: flex; justify-content: space-between; gap: 20px; padding-inline: 15px; }
+.site-footer__bottom p { font-size: 17px; line-height: 1.9; color: rgba(103, 103, 103, 0.5); }
+
+
+/* ==========================================================================
+   15. SCROLL-REVEAL (only active when JS adds .js to <html>)
+   ========================================================================== */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+  .project-card__back { transition: none; }
+}
+
+
+/* ==========================================================================
+   16. TABLET (max 991px)
+   ========================================================================== */
+@media (max-width: 991px) {
+  /* Header: menu collapses into the hamburger */
+  .site-nav, .site-header__cta { display: none; }
+  .nav-toggle { display: block; margin-left: auto; margin-right: 10px; }
+
+  .hero h1 { font-size: 46px; line-height: 1.4; }
+  .hero { padding-top: 110px; }
+
+  .section-title { font-size: 35px; line-height: 1.2; }
+  .section-title--small { font-size: 28px; }
+  .title-underline { width: 30%; }
+
+  /* Projects stack, centred; the stagger is removed */
+  .projects__grid { grid-template-columns: minmax(0, 560px); justify-content: center; padding-inline: 15px; }
+  .projects__grid .project-card:nth-child(2) { margin-top: 0; }
+
+  .about__intro { grid-template-columns: 1fr; row-gap: 30px; justify-items: center; }
+  .about__text { padding-left: 0; }
+
+  .logos__row { max-width: 740px; padding-inline: 15px; }
+  .websites__grid { grid-template-columns: repeat(2, 1fr); }
+  .experience__logos { grid-template-columns: repeat(4, 1fr); max-width: 760px; margin-inline: auto; }
+}
+
+
+/* ==========================================================================
+   17. MOBILE (max 767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  body { font-size: 16px; line-height: 1.6; }
+
+  /* Hero: slider first, then text (as on the original) */
+  .hero { min-height: 0; padding: 95px 0 40px; }
+  .hero__inner { grid-template-columns: 1fr; row-gap: 20px; }
+  .hero__slider { order: -1; }
+  .hero h1 { font-size: 38px; line-height: 1.3; }
+  .hero__name { font-size: 20px; font-weight: 700; letter-spacing: 1px; line-height: 1.5; margin-top: 15px; }
+
+  .experience__label { font-size: 20px; }
+  .experience__logos { grid-template-columns: repeat(2, 1fr); margin-top: 10px; }
+  .experience__logos li { height: 85px; }
+
+  .section { padding: 60px 0 50px; }
+  .section-title { font-size: 30px; line-height: 1.3; }
+  .section-title--small { font-size: 25px; }
+  .projects__grid { margin-top: 35px; gap: 40px; padding-inline: 25px; }
+  .project-card { height: 370px; }
+  .project-card__label { font-size: 25px; margin: 25px 0; }
+  .project-card__back { padding: 15px 18px 20px; }
+  .project-card__back p { font-size: 15px; line-height: 1.55; }
+  .projects .center { margin-top: 40px; }
+
+  .about { padding: 60px 0 25px; }
+  .about__name { font-size: 30px; }
+  .about__role { font-size: 20px; }
+  .experience-card { margin-top: 50px; padding: 30px 20px; }
+  .experience-card h3 { font-size: 28px; }
+  .experience-card__lists { grid-template-columns: 1fr; }
+  .experience-card li { font-size: 17px; line-height: 1.6; margin-left: 10px; }
+
+  .logos__row { grid-template-columns: repeat(2, 1fr); row-gap: 10px; }
+
+  .websites__grid { grid-template-columns: 1fr; gap: 24px; margin-top: 30px; }
+
+  .contact { padding: 60px 0 50px; }
+  .contact-form { padding: 25px 20px 30px; margin-top: 30px; }
+
+  .site-footer__top { flex-direction: column-reverse; gap: 20px; }
+  .site-footer__nav { justify-content: center; }
+  .site-footer__bottom { flex-direction: column; text-align: center; gap: 0; }
+}

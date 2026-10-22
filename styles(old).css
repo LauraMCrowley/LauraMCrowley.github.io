@@ -1,0 +1,40 @@
+* {
+        border: 1px red solid;
+}
+
+a {
+        color: #1f1f1f;
+        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        text-decoration: none;
+ }
+
+.h1 {
+        color: #1f1f1f;
+        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
+        font-size: 80px;
+ }
+
+h2 {
+        color: #1f1f1f;
+        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
+        font-size: 36px;
+ }
+
+ h3 {
+       color: #1f1f1f;
+       font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
+       font-size: 24px;
+}
+
+ #headshot {
+        border-right: 20px solid #ABD5E6;
+        border-bottom: 20px solid #ABD5E6;
+ }
+
+ p {
+        color: #1f1f1f;
+        font-family: 'Figtree', Helvetica, Arial, Lucida, sans-serif;
+        font-size: 18px;
+ }
