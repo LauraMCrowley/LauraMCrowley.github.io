@@ -713,7 +713,7 @@ a {
   filter: brightness(1.1) saturate(0);
 }
 
-.about__photo>img:hover {
+.about__photo>img:first-child:hover {
   filter:none!important;
 }
 
