@@ -879,7 +879,7 @@ a {
   transition: transform 0.6s ease;
 }
 
-.tile:hover .tile_ {
+.tile:hover .tile {
   transform: scale(1.02);
 }
 
