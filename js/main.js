@@ -132,17 +132,16 @@
 
   /* ------------------------------------------------------------------
      6. CONTACT FORM
-     Sends the message to lauramcrowley00@gmail.com via FormSubmit
+     Sends the message to lauramcrowley00@gmail.com via Web3Forms
      (a free form-to-email service) without leaving the page.
 
-     NOTE: the first time the live form is submitted, FormSubmit emails
-     lauramcrowley00@gmail.com a one-off activation link. Click it once
-     and all later messages are delivered normally.
-
-     If sending fails, a pre-filled "email me directly" link is shown so
+     The access key below is meant to be public; it can only be used to
+     send email to your own address. If sending fails or takes longer
+     than 20 seconds, a pre-filled "email me directly" link is shown so
      no message is lost. Messages match the original Brizy form.
      ------------------------------------------------------------------ */
-  var RECIPIENT = "lauramcrowley00@gmail.com";
+  var ACCESS_KEY = "3f9b6e0a-a0d4-462b-ab7f-48bd919bf64d";
+  var RECIPIENT = "lauramcrowley00@gmail.com"; // only used for the "email me directly" fallback
   var form = document.getElementById("contact-form");
   var statusEl = document.getElementById("form-status");
 
@@ -159,7 +158,7 @@
   if (form && statusEl) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (form.elements["_honey"].value) return; // spam trap
+      if (form.elements["botcheck"].checked) return; // spam trap: bots tick the hidden box
 
       var email = form.elements["email"].value.trim();
       var message = form.elements["message"].value.trim();
@@ -171,35 +170,45 @@
 
       var button = form.querySelector("button[type='submit']");
       var data = {
+        access_key: ACCESS_KEY,
+        subject: form.elements["subject"].value,
+        from_name: form.elements["from_name"].value,
         name: form.elements["name"].value.trim(),
         email: email,
-        message: message,
-        _subject: form.elements["_subject"].value,
-        _template: "table"
+        message: message
       };
 
       button.disabled = true;
       button.textContent = "Sending…";
       showStatus("", "");
 
-      fetch("https://formsubmit.co/ajax/" + RECIPIENT, {
+      // Give up after 20 seconds so the button can never stay stuck on "Sending…"
+      var controller = new AbortController();
+      var timeout = setTimeout(function () { controller.abort(); }, 20000);
+
+      fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        signal: controller.signal
       })
-        .then(function (res) { if (!res.ok) throw new Error("failed"); return res.json(); })
+        .then(function (res) { return res.json(); })
         .then(function (r) {
-          if (r.success === false || r.success === "false") throw new Error("rejected");
+          if (!r.success) {
+            console.warn("Web3Forms said:", r.message || r); // visible in the browser console (F12)
+            throw new Error("rejected");
+          }
           form.reset();
           showStatus("success", "Your email was sent successfully");
         })
-        .catch(function () {
+        .catch(function (err) {
+          console.warn("Contact form error:", err);
           var mailto = "mailto:" + RECIPIENT +
             "?subject=" + encodeURIComponent("Message from " + (data.name || "website visitor")) +
             "&body=" + encodeURIComponent(data.message + "\n\n" + data.name + "\n" + data.email);
           showStatus("error", "Your email was not sent. <a href=\"" + esc(mailto) + "\">Click here to email me directly</a>.");
         })
-        .finally(function () { button.disabled = false; button.textContent = "Send"; });
+        .finally(function () { clearTimeout(timeout); button.disabled = false; button.textContent = "Send"; });
     });
   }
 })();

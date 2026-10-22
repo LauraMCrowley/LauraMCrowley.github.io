@@ -13,7 +13,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
-  <link rel="preconnect" href="https://formsubmit.co" crossorigin>
 
 
   <link rel="stylesheet" href="css/styles.css">
@@ -298,19 +297,21 @@
       <div class="contact__inner">
         <h2 class="section-title">Get in Touch</h2>
 
-        <!--
-          Works without JavaScript (posts to FormSubmit, which emails the message on).
+         <!--
+          Works without JavaScript (posts to Web3Forms, which emails the message on).
           With JavaScript, js/main.js sends it in the background and shows a message on the page.
         -->
-        <form class="contact-form" id="contact-form" action="https://formsubmit.co/7d2ff8d04530df52b2ff16e674638aa5" method="POST" novalidate>
+        <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="3f9b6e0a-a0d4-462b-ab7f-48bd919bf64d">
+          <input type="hidden" name="subject" value="New message from your portfolio website">
+          <input type="hidden" name="from_name" value="Laura Crowley Website">
+
           <input type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name">
           <input type="email" name="email" placeholder="Email" aria-label="Email" autocomplete="email" required>
           <textarea name="message" placeholder="Message" aria-label="Message" rows="6" required></textarea>
 
-          <!-- Spam trap: real visitors never see or fill this in -->
-          <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <input type="hidden" name="_subject" value="New message from your portfolio website">
-          <input type="hidden" name="_template" value="table">
+          <!-- Spam trap: real visitors never see or tick this -->
+          <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" aria-hidden="true">
 
           <button class="contact-form__send" type="submit">Send</button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
