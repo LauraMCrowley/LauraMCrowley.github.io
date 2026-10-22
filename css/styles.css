@@ -307,12 +307,13 @@ a {
   flex: none;
   display: block;
   width: 65px;
-  margin-right: 25px;
+  margin-right: 15px;
 }
 
 .site-header__logo img {
   width: 65px;
   height: 65px;
+  padding-right: 15px;
 }
 
 .site-nav {
