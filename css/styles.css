@@ -560,7 +560,7 @@ a {
   filter: saturate(0);
 }
 
-.tech--wordpress, .tech--brizy, .tech--elementor, .tech--woocommerce{
+.tech img:hover {
   filter:none;
 }
 
