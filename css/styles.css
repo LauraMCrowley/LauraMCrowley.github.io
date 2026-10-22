@@ -267,25 +267,25 @@ a { color: inherit; }
    ========================================================================== */
 .experience { padding: 30px 0 32px; background: var(--grey-bg); }
 .experience__label {
-  font-size: 23px; font-weight: 500; line-height: 1.4; text-align: center; /*color: var(--ink);*/
-}
-.experience__label:hover{
   font-size: 23px; font-weight: 500; line-height: 1.4; text-align: center; color: var(--ink);
 }
+
 .experience__logos {
   display: grid; grid-template-columns: repeat(4, 200px);
   justify-content: center; align-items: center; margin-top: 22px;
   filter: saturate(0);
 }
-.experience__logos:hover {
-  filter: none;
-}
+
 .experience__logos li { display: grid; place-items: center; height: 122px; }
 .tech { max-width: 100%; height: auto; }
 .tech--wordpress  { width: 85px; }
 .tech--brizy      { width: 170px; }
 .tech--elementor  { width: 92px; }
 .tech--woocommerce{ width: 122px; }
+
+.experience__logos li:hover {
+  filter:none;
+}
 
 
 /* ==========================================================================
