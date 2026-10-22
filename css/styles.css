@@ -533,12 +533,17 @@ a {
   display: grid;
   place-items: center;
   height: 122px;
+  filter:saturate(0);
+}
+
+.experience__logos li:hover  img {
+  filter:none;
 }
 
 .tech {
   max-width: 100%;
   height: auto;
-  filter:saturate(0);
+
 }
 
 .tech--wordpress {
@@ -557,9 +562,6 @@ a {
   width: 122px;
 }
 
-.tech li:hover img {
-  filter:none;
-}
 
 /* ==========================================================================
    9. PROJECTS (flip cards)
