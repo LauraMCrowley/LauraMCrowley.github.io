@@ -533,7 +533,10 @@ a {
   display: grid;
   place-items: center;
   height: 122px;
-  filter:saturate(0);
+}
+
+.experience__logos li  img {
+    filter:saturate(0);
 }
 
 .experience__logos li:hover  img {
