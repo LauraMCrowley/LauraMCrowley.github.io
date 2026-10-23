@@ -538,6 +538,7 @@ a {
 
 .experience__logos li img {
   filter: saturate(0);
+  transition: filter 0.4s ease, transform 0.3s ease;
 }
 
 .experience__logos li:hover img {
@@ -823,7 +824,6 @@ a {
 
 .logos__row li:hover img {
   filter: none;
-  transform: scale(1.05);
 }
 
 
