@@ -863,7 +863,7 @@ a {
 
 .tile:hover {
   z-index: 2;
-  transform: scale(1.04);
+  scale: 1.04; /* 'scale' is its own property, so it can't be overridden by .reveal's transform */
   box-shadow: 0 8px 24px rgba(52, 52, 52, 0.28);
 }
 
@@ -964,9 +964,10 @@ a {
   transform: none;
 }
 
-.js .reveal.is-visible.tile:hover {
-  transform: scale(1.04);
-  box-shadow: 0 8px 24px rgba(52, 52, 52, 0.28);
+.js .reveal.tile {
+  /* reveal fades via opacity/transform (staggered); hover uses scale/box-shadow (instant) */
+  transition: opacity 0.7s ease, transform 0.7s ease, scale 0.3s ease, box-shadow 0.3s ease;
+  transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms, 0ms;
 }
 
 @media (prefers-reduced-motion: reduce) {

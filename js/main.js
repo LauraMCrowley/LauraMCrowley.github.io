@@ -122,7 +122,7 @@
       });
     }, { threshold: 0.08 });
     items.forEach(function (el, i) {
-      el.style.transitionDelay = (i % 3) * 80 + "ms";
+      el.style.setProperty("--reveal-delay", (i % 3) * 80 + "ms");
       io.observe(el);
     });
   } else {
