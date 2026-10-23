@@ -831,26 +831,30 @@ a {
    12. MORE WEBSITE DESIGNS
    ========================================================================== */
 .websites {
-  background: linear-gradient(0deg, var(--grey-bg) 0%, var(--white) 100%);
+  background: linear-gradient(
+    0deg,
+    var(--grey-bg) 0%,
+    var(--white) 100%
+  );
 }
 
 .websites__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 30px;
   max-width: 1346px;
   margin: 40px auto 0;
-  padding-inline: 10px;
+  padding: 10px;
 }
 
 .tile {
+  position: relative;
   aspect-ratio: 418 / 280;
   box-shadow: 0 0 15px rgba(52, 52, 52, 0.19);
   background: #fff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* centre a lone tile on the last row (3-column layout) */
 @media (min-width: 992px) {
   .tile:last-child:nth-child(3n+1) {
     grid-column: 2;
@@ -858,9 +862,9 @@ a {
 }
 
 .tile:hover {
-  /*transform: translateY(-4px);*/
+  z-index: 2;
+  transform: scale(1.04);
   box-shadow: 0 8px 24px rgba(52, 52, 52, 0.28);
-  transform: scale(1.04)!important;
 }
 
 .tile__link {
