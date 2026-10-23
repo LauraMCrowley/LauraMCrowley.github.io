@@ -1113,15 +1113,14 @@ a {
 
   .experience__logos {
     grid-template-columns: repeat(2, 1fr);
-    margin-top: 10px;
   }
 
   .experience__logos li {
-    height: 85px;
+    height: 105px;
   }
 
   .section {
-    padding: 60px 0 50px;
+    padding: 60px 10px 50px;
   }
 
   .section-title {
@@ -1134,6 +1133,7 @@ a {
   }
 
   .projects__grid {
+    margin-top: 35px;
     gap: 40px;
     padding-inline: 25px;
   }
@@ -1144,7 +1144,6 @@ a {
 
   .project-card__label {
     font-size: 25px;
-    margin: 25px 0;
   }
 
   .project-card__back {
