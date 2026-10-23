@@ -1134,7 +1134,6 @@ a {
   }
 
   .projects__grid {
-    margin-top: 35px;
     gap: 40px;
     padding-inline: 25px;
   }
@@ -1203,14 +1202,6 @@ a {
     margin-top: 30px;
   }
 
-  .contact {
-    padding: 60px 0 50px;
-  }
-
-  .contact-form {
-    padding: 25px 20px 30px;
-    margin-top: 30px;
-  }
 
   .site-footer__top {
     flex-direction: column-reverse;
