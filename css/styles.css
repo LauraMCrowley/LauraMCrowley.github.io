@@ -538,7 +538,7 @@ a {
 
 .experience__logos li img {
   filter: saturate(0);
-  transition: filter 0.4s ease, transform 0.3s ease;
+    transition: filter 0.4s ease, transform 0.3s ease;
 }
 
 .experience__logos li:hover img {
@@ -848,10 +848,10 @@ a {
 }
 
 .tile {
+  position: relative;
   aspect-ratio: 418 / 280;
   box-shadow: 0 0 15px rgba(52, 52, 52, 0.19);
   background: #fff;
-  transform: scale(1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -862,7 +862,6 @@ a {
 }
 
 .tile:hover {
-  position: relative;
   z-index: 2;
   transform: scale(1.04);
   box-shadow: 0 8px 24px rgba(52, 52, 52, 0.28);
@@ -963,6 +962,11 @@ a {
 .js .reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+
+.js .reveal.is-visible.tile:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 24px rgba(52, 52, 52, 0.28);
 }
 
 @media (prefers-reduced-motion: reduce) {
