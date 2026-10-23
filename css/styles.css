@@ -1119,6 +1119,10 @@ a {
     height: 105px;
   }
 
+  .tech--brizy {
+    padding-left:20px;
+}
+
   .section {
     padding: 60px 10px 50px;
   }
