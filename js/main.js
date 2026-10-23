@@ -7,7 +7,6 @@
    3. Hero fade slider
    4. Project flip cards (tap to flip on touch screens)
    5. Scroll-reveal animation
-   6. Contact form
    ========================================================================== */
 
 (function () {
